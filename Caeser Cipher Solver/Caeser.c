@@ -1,32 +1,35 @@
+// Author: Drew Theis
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 
 int main()  {
-	char message[100], ch;
-	int i, key;
+	char message[100];
+	char decryptMessage;
+	int key;
 	printf("Enter a message to decrypt: ");
 	gets(message);
 	key = 0;
 	while (key < 26) {
-		for (i = 0; message[i] != '\0'; ++i) {
-			ch = message[i];
+		for (int i = 0; message[i] != '\0'; ++i) {
+			decryptMessage = message[i];
 
-			if (ch >= 'a' && ch <= 'z') {
-				ch = ch - key;
+			if (decryptMessage >= 'a' && decryptMessage <= 'z') {
+				decryptMessage = decryptMessage - key;
 
-				if (ch < 'a') {
-					ch = ch + 'z' - 'a' + 1;
+				if (decryptMessage < 'a') {
+					decryptMessage = decryptMessage + 'z' - 'a' + 1;
 				}
-				message[i] = ch;
+				message[i] = decryptMessage;
 			}
-			else if (ch >= 'A' && ch <= 'Z') {
-				ch = ch - key;
+			else if (decryptMessage >= 'A' && decryptMessage <= 'Z') {
+				decryptMessage = decryptMessage - key;
 
-				if (ch < 'A') {
-					ch = ch + 'Z' - 'A' + 1;
+				if (decryptMessage < 'A') {
+					decryptMessage = decryptMessage + 'Z' - 'A' + 1;
 				}
-				message[i] = ch;
+				message[i] = decryptMessage;
 			}
 		}
 		key++;
